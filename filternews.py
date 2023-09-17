@@ -41,7 +41,6 @@ for x in symbol_list:
 sorted_final=final.sort_values(by='Volume',ascending=False)
 merge_df=sorted_final.merge(stk_raw_df,on='Tag',how="left")
 merge_df["Date"]=merge_df["Date"].dt.date
-!pip install  yfinance and pandas_ta
 import pandas as pd
 import pandas_ta as ta
 import yfinance as yf
