@@ -18,7 +18,7 @@ def stock_history(name, days=1):
         data =yf.download(symbol, period=days, progress=False)
         data1=yf.download(symbol, period='365d', progress=False)
         high=round(max(data1["High"]),2)
-        low=round(max(data1["Low"]),2)
+        low=round(min(data1["Low"]),2)
         if data.empty:
             print(f"No data available for {symbol}")
             return None
@@ -29,7 +29,7 @@ def stock_history(name, days=1):
     filtered_data = data[['Open', 'High', 'Low', 'Close', 'Volume']].copy()
     filtered_data['Tag'] = name
     filtered_data["52W_high"]=high
-    filtered_data["52W_low"]=high
+    filtered_data["52W_low"]=low
     final = filtered_data[['Tag', 'Open', 'Low', 'High', 'Close',"52W_high","52W_low",'Volume']].reset_index()
     return final
 symbol_list =list(stk_raw_df['Tag'])
