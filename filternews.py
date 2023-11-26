@@ -296,4 +296,5 @@ sorted_all=final[[ 'Date','Tag',"Open",'Close',"52W_high","52W_low",'Gain',"Down
 out_gs = client.open('News Database Sep 2023')
 out_sheet=out_gs.worksheet("Final")
 out_sheet.clear()
+#save data
 set_with_dataframe(out_sheet, sorted_all)
